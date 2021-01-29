@@ -1,47 +1,100 @@
 import Header from './components/Header'
 import Courses from './components/Courses'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import AddCourse from './components/AddCourse'
 
 function App() {
     const [showAddCourse, setShowAddCourse] = useState(false)
-    const [courses, setCourse] = useState(
-        [
-            {
-                id: 1,
-                text: 'CSE101',
-                desc: 'Intro to Programming',
-                complete: true,
-            },
-            {
-                id: 2,
-                text: 'CSE205',
-                desc: 'OOP',
-                complete: true,
-            },
-            {
-                id: 3,
-                text: 'SER222',
-                desc: 'Data Structures and Algo',
-                complete: true,
-            }
-        ])
-    const addCourse = (course) => {
-        //Added because no back end to create id
-        const id = Math.floor(Math.random() *10000 + 1)
-        const newCourse = { id, ...course }
-        setCourse( [...courses, newCourse])
+    const [courses, setCourses] = useState(
+        [])
+    useEffect(() => {
+        const getCourses = async () => {
+            const coursesFromServer = await fetchCourses()
+            setCourses(coursesFromServer)
+        }
+
+        getCourses()
+    }, [])
+
+    // Fetch Courses
+    const fetchCourses = async () => {
+        const res = await fetch('http://localhost:5000/courses')
+        const data = await  res.json()
+
+        return data
     }
+    // Fetch Course
+    const fetchCourse = async (id) => {
+        const res = await fetch(`http://localhost:5000/tasks/${id}`)
+        const data = await res.json()
+
+        return data
+    }
+
+    // Add Course
+    const addCourse = async (course) => {
+        const res = await fetch('http://localhost:5000/courses', {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify(course),
+        })
+
+        const data = await res.json()
+
+        setCourses([...courses, data])
+    }
+
     // Delete Task: Function created here at top of program, so it can be passed down
     // to components as a prop for use.
-    const deleteCourse = (id) => {
-        // Setting the task to filters tasks
-        setCourse(courses.filter((course) => course.id !== id))
+    const deleteCourse = async (id) => {
+        await fetch(`http://localhost:5000/courses/${id}`,  {method: 'DELETE',})
+        setCourses(courses.filter((course) => course.id !== id))
     }
 
     // Toggle Reminder
-    const toggleCourse = (id) => {
-        setCourse(courses.map((course) => course.id === id ? { ...course, complete: !course.complete } : course))
+    const toggleCourseVisible = async (id) => {
+        const courseToToggle = await fetchCourse(id)
+        const updateCourse = { ...courseToToggle, visible: !courseToToggle.visible }
+
+        const res = await fetch(`http://localhost:5000/tasks/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify(updateCourse),
+        })
+
+        const data = await res.json()
+
+        setCourses(
+            courses.map((course) =>
+                course.id === id ? { ...course, visible: data.visible } : course
+            )
+        )
+    }
+
+    // Toggle Complete
+    const toggleCourseComplete = async (id) => {
+        const courseToToggle = await fetchCourse(id)
+        const updateCourse = { ...courseToToggle, complete: !courseToToggle.complete }
+
+        const res = await fetch(`http://localhost:5000/tasks/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify(updateCourse),
+        })
+
+        const data = await res.json()
+
+        setCourses(
+            courses.map((course) =>
+                course.id === id ? { ...course, complete: data.complete } : course
+            )
+        )
     }
 
     return (
@@ -49,7 +102,8 @@ function App() {
             <Header onAdd={() => setShowAddCourse(!showAddCourse)} showAdd={showAddCourse}/>
             {showAddCourse && <AddCourse onAdd={addCourse}/>}
             {courses.length > 0 ? (
-                <Courses courses={courses} onDelete={deleteCourse} onToggle={toggleCourse}/>
+                <Courses courses={courses} onDelete={deleteCourse}
+                         onToggle={toggleCourseComplete} onVisible={toggleCourseVisible}/>
             ) : ('No courses to show')
             }
         </div>

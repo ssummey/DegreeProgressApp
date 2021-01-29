@@ -1,0 +1,268 @@
+{
+  "courses": [
+    {
+      "text": "ASU101",
+      "description": "",
+      "id": "1",
+      "visible": true, "complete": true
+    },
+    {
+      "text": "ENG101",
+      "description": "",
+      "id": "2",
+      "visible": true, "complete": true
+    },
+    {
+      "text": "FSE100",
+      "description": "",
+      "id": "3",
+      "visible": true, "complete": true
+    },
+    {
+      "text": "CSE110",
+      "description": "",
+      "id": "4",
+      "visible": true, "complete": true
+    },
+    {
+      "text": "ENG102",
+      "description": "",
+      "id": "5",
+      "visible": true, "complete": true
+    },
+    {
+      "text": "CSE205",
+      "description": "",
+      "id": "6",
+      "visible": true, "complete": true
+    },
+    {
+      "text": "MAT265",
+      "description": "",
+      "id": "7",
+      "visible": true, "complete": true
+    },
+    {
+      "text": "ENG101",
+      "description": "",
+      "id": "8",
+      "visible": true, "complete": true
+    },
+    {
+      "text": "SER232",
+      "description": "",
+      "id": "9",
+      "visible": true, "complete": true
+    },
+    {
+      "text": "MAT266",
+      "description": "",
+      "id": "10",
+      "visible": true, "complete": true
+    },
+    {
+      "text": "MAT243",
+      "description": "",
+      "id": "11",
+      "visible": true, "complete": true
+    },
+    {
+      "text": "CSE230",
+      "description": "",
+      "id": "12",
+      "visible": true, "complete": true
+    },
+    {
+      "text": "CSE240",
+      "description": "",
+      "id": "13",
+      "visible": true, "complete": true
+    },
+    {
+      "text": "MAT272",
+      "description": "",
+      "id": "14",
+      "visible": true, "complete": true
+    },
+    {
+      "text": "SER222",
+      "description": "",
+      "id": "15",
+      "visible": true, "complete": true
+    },
+    {
+      "text": "EGR104",
+      "description": "",
+      "id": "16",
+      "visible": true, "complete": true
+    },
+    {
+      "text": "EGR280",
+      "description": "",
+      "id": "17",
+      "visible": true, "complete": true
+    },
+    {
+      "text": "SER216",
+      "description": "",
+      "id": "18",
+      "visible": true, "complete": true
+    },
+    {
+      "text": "SER334",
+      "description": "",
+      "id": "19",
+      "visible": true, "complete": true
+    },
+    {
+      "text": "SER315",
+      "description": "",
+      "id": "20",
+      "visible": true, "complete": true
+    },
+    {
+      "text": "MAT343",
+      "description": "",
+      "id": "21",
+      "visible": true, "complete": true
+    },
+    {
+      "text": "SER316",
+      "description": "",
+      "id": "22",
+      "visible": true, "complete": true
+    },
+    {
+      "text": "SER321",
+      "description": "",
+      "id": "23",
+      "visible": true, "complete": false
+    },
+    {
+      "text": "PHY121",
+      "description": "",
+      "id": "24",
+      "visible": true, "complete": true
+    },
+    {
+      "text": "PHY122",
+      "description": "",
+      "id": "25",
+      "visible": true, "complete": true
+    },
+    {
+      "text": "SER335",
+      "description": "",
+      "id": "26",
+      "visible": true, "complete": true
+    },
+    {
+      "text": "SER322",
+      "description": "",
+      "id": "27",
+      "visible": true, "complete": false
+    },
+    {
+      "text": "CHEM101",
+      "description": "",
+      "id": "28",
+      "visible": true, "complete": false
+    },
+    {
+      "text": "CHEM102",
+      "description": "",
+      "id": "29",
+      "visible": true, "complete": false
+    },
+    {
+      "text": "SER4xx",
+      "description": "",
+      "id": "30",
+      "visible": true, "complete": false
+    },
+    {
+      "text": "SER415",
+      "description": "",
+      "id": "31",
+      "visible": true, "complete": false
+    },
+    {
+      "text": "SER4xx",
+      "description": "",
+      "id": "32",
+      "visible": true, "complete": false
+    },
+    {
+      "text": "SER416",
+      "description": "",
+      "id": "33",
+      "visible": true, "complete": false
+    },
+    {
+      "text": "SER4xx",
+      "description": "",
+      "id": "34",
+      "visible": true, "complete": false
+    },
+    {
+      "text": "SER401",
+      "description": "",
+      "id": "35",
+      "visible": true, "complete": false
+    },
+    {
+      "text": "UPR244",
+      "description": "",
+      "id": "36",
+      "visible": true, "complete": true
+    },
+    {
+      "text": "CD",
+      "description": "",
+      "id": "37",
+      "visible": true, "complete": false
+    },
+    {
+      "text": "REL100",
+      "description": "",
+      "id": "38",
+      "visible": true, "complete": true
+    },
+    {
+      "text": "ENG222",
+      "description": "",
+      "id": "39",
+      "visible": true, "complete": true
+    },
+    {
+      "text": "REL100",
+      "description": "",
+      "id": "40",
+      "visible": true, "visible": true, "complete": true
+    },
+    {
+      "text": "SER3xx",
+      "description": "",
+      "id": "41",
+      "visible": true, "complete": false
+    },
+    {
+      "text": "PHI360",
+      "description": "",
+      "id": "42",
+      "visible": true, "complete": true
+    },
+    {
+      "text": "SER402",
+      "description": "",
+      "id": "43",
+      "visible": true, "complete": false
+    },
+    {
+      "text": "PHIDEC",
+      "description": "",
+      "id": "44",
+      "visible": true, "complete": true
+    }
+  ]
+}

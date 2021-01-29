@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 const AddCourse = ({ onAdd }) => {
     const [text, setText] = useState('')
-    const [desc, setDesc] = useState('')
+    const [description, setDesc] = useState('')
     const [complete, setComplete] = useState(false)
 
     const onSubmit = (e) => {
@@ -13,7 +13,7 @@ const AddCourse = ({ onAdd }) => {
             return
         }
 
-        onAdd({ text, desc, complete })
+        onAdd({ text, description, complete })
         //Clear selections
         setText('')
         setDesc('')
@@ -31,7 +31,7 @@ const AddCourse = ({ onAdd }) => {
 
             <div className='form-control'>
                 <label>Description</label>
-                <input type="text" placeholder='Add Description' value={desc}
+                <input type="text" placeholder='Add Description' value={description}
                        onChange={ (e) => setDesc(e.target.value)}/>
             </div>
 
