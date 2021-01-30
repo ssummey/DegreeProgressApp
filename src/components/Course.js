@@ -1,24 +1,27 @@
-import { FaTimes } from 'react-icons/fa'
+import { FaTimes, FaPen } from 'react-icons/fa'
 
-const course = ({course, onDelete, onToggle, onVisible}) => {
+const course = ({course, onDelete, onToggle, onVisible, onEdit}) => {
 
     return (
         // Template literal logic adds and removes border for reminders
         // course comes down from state and check reminder
         <div className='course'>
 
-            <h3>
-                <input className='complete-check-box' type='checkbox' value={course.complete}
+            <div className='course'>
+                <input className='complete-check-box col' type='checkbox'
                     onClick={() => onToggle(course.id)}
                        checked={course.complete}/>
-                <div className='text'>{course.text} </div>
-                <div className='text'>{course.description}</div>
+                <div className='col'>{course.text} </div>
+                <div className='col'>{course.description}</div>
+                <div className='col'>
                 <FaTimes style={{color: 'red',
                 cursor: 'pointer'}}
                                      onClick={() => onDelete(course.id)} />
-            </h3>
-
-
+                <FaPen style={{color: 'green',
+                    cursor: 'pointer'}}
+                         onClick={() => onEdit(course.id)} />
+            </div>
+            </div>
         </div>
     )
 }

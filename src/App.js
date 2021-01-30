@@ -4,9 +4,11 @@ import { useState, useEffect } from 'react'
 import AddCourse from './components/AddCourse'
 
 function App() {
+    // ShowADDCourse is the hook for the add course button
     const [showAddCourse, setShowAddCourse] = useState(false)
     const [courses, setCourses] = useState(
         [])
+
     useEffect(() => {
         const getCourses = async () => {
             const coursesFromServer = await fetchCourses()
@@ -25,7 +27,7 @@ function App() {
     }
     // Fetch Course
     const fetchCourse = async (id) => {
-        const res = await fetch(`http://localhost:5000/tasks/${id}`)
+        const res = await fetch(`http://localhost:5000/courses/${id}`)
         const data = await res.json()
 
         return data
@@ -54,33 +56,33 @@ function App() {
     }
 
     // Toggle Reminder
-    const toggleCourseVisible = async (id) => {
-        const courseToToggle = await fetchCourse(id)
-        const updateCourse = { ...courseToToggle, visible: !courseToToggle.visible }
-
-        const res = await fetch(`http://localhost:5000/tasks/${id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-type': 'application/json',
-            },
-            body: JSON.stringify(updateCourse),
-        })
-
-        const data = await res.json()
-
-        setCourses(
-            courses.map((course) =>
-                course.id === id ? { ...course, visible: data.visible } : course
-            )
-        )
-    }
+    // const toggleCourseVisible = async (id) => {
+    //     const courseToToggle = await fetchCourse(id)
+    //     const updateCourse = { ...courseToToggle, visible: !courseToToggle.visible }
+    //
+    //     const res = await fetch(`http://localhost:5000/courses/${id}`, {
+    //         method: 'PUT',
+    //         headers: {
+    //             'Content-type': 'application/json',
+    //         },
+    //         body: JSON.stringify(updateCourse),
+    //     })
+    //
+    //     const data = await res.json()
+    //
+    //     setCourses(
+    //         courses.map((course) =>
+    //             course.id === id ? { ...course, visible: data.visible } : course
+    //         )
+    //     )
+    // }
 
     // Toggle Complete
     const toggleCourseComplete = async (id) => {
         const courseToToggle = await fetchCourse(id)
         const updateCourse = { ...courseToToggle, complete: !courseToToggle.complete }
 
-        const res = await fetch(`http://localhost:5000/tasks/${id}`, {
+        const res = await fetch(`http://localhost:5000/courses/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-type': 'application/json',
@@ -97,13 +99,30 @@ function App() {
         )
     }
 
+    // Edit Course
+    const editCourse = async (id) => {
+        const courseToToggle = await fetchCourse(id)
+        const updateCourse = { ...courseToToggle, complete: !courseToToggle.complete }
+
+        const res = await fetch(`http://localhost:5000/courses/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify(updateCourse),
+        })
+
+        const data = await res.json()
+        setCourses([...courses, data])
+    }
+
     return (
         <div className="container">
             <Header onAdd={() => setShowAddCourse(!showAddCourse)} showAdd={showAddCourse}/>
             {showAddCourse && <AddCourse onAdd={addCourse}/>}
             {courses.length > 0 ? (
                 <Courses courses={courses} onDelete={deleteCourse}
-                         onToggle={toggleCourseComplete} onVisible={toggleCourseVisible}/>
+                         onToggle={toggleCourseComplete} onEdit={editCourse}/>
             ) : ('No courses to show')
             }
         </div>

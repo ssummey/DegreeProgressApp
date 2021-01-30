@@ -71,14 +71,18 @@ body {
   justify-content: space-between;
 }
 
-h3 {
+.course {
   display: flex;
-  align-items: center;
-  justify-content: end;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.col {
+  margin: 0.5em;
 }
 
 .text {
-  margin: 0.5em;
+  margin: 1em;
 }
 .complete-check-box {
   margin: 1em;
