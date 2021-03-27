@@ -55,6 +55,7 @@ function App() {
         setCourses(courses.filter((course) => course.id !== id))
     }
 
+    // Not implemented yet
     // Toggle Reminder
     // const toggleCourseVisible = async (id) => {
     //     const courseToToggle = await fetchCourse(id)
@@ -77,7 +78,7 @@ function App() {
     //     )
     // }
 
-    // Toggle Complete
+    // Toggle Complete. Has the course been completed
     const toggleCourseComplete = async (id) => {
         const courseToToggle = await fetchCourse(id)
         const updateCourse = { ...courseToToggle, complete: !courseToToggle.complete }
